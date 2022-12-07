@@ -10,3 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
+
+#include <iostream>
+#include <utility>
+
+// the name argument will newer used anywhere afterwards, so it is a good idea
+// to move() it to the rvalue constructor
+Zombie *Zombie::newZombie(std::string name) {
+	std::cout << "newZombie() is resurrecting " + name << std::endl;
+	return (new Zombie(std::move(name)));
+}
