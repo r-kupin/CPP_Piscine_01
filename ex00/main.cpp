@@ -57,15 +57,15 @@ int main(){
 	std::string ZombieNameThatWeWillNeverNeedAfterwards = "Danny";
 
 	/* stack-allocated */
-	//	COPY constructor is used, cause constant is an lvalue and can't be converted
+	//	COPY-ARG constructor is used, cause constant is an lvalue and can't be converted
 	//	with move() - it will cause a compile-time error
 	Zombie AndyTheZombie(kZombieName);
 	AndyTheZombie.announce();
-	//	MOVE constructor is used, cause non-constant lvalue is explicitly converted
+	//	MOVE-ARG constructor is used, cause non-constant lvalue is explicitly converted
 	//	with move() - which allows us to avoid copying
 	Zombie DannyTheZombie(std::move(ZombieNameThatWeWillNeverNeedAfterwards));
 	DannyTheZombie.announce();
-	//	MOVE constructor is used, cause "Berty" is a temporary, so is an rvalue
+	//	MOVE-ARG constructor is used, cause "Berty" is a temporary, so is an rvalue
 	//	by default
 	Zombie BertyTheTempValueNamedZombie("Berty");
 	BertyTheTempValueNamedZombie.announce();
