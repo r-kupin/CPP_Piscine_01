@@ -10,3 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
+#include "Weapon.hpp"
+
+class HumanA {
+public:
+	HumanA(std::string name, Weapon& weapon);
+
+	void attack() const;
+private:
+	Weapon& weapon_;
+	std::string name_;
+};

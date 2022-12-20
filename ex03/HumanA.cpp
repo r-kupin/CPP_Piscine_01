@@ -10,3 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
+#include <iostream>
+#include <utility>
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+
+HumanA::HumanA(std::string name, Weapon& weapon)
+: name_(std::move(name)), weapon_(weapon) {}
+
+void HumanA::attack() const {
+	std::cout << name_ << " attacks with his " << weapon_.GetType() << std::endl;
+}
