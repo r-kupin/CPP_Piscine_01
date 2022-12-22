@@ -31,10 +31,10 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm $(OBJS)
+	rm -rfd $(OBJS)
 
 fclean: clean
-	rm $(NAME)
+	rm -rfd $(NAME)
 
 re:
 	@$(MAKE) fclean
