@@ -13,9 +13,20 @@
 #include <iosfwd>
 #include <fstream>
 #include <iostream>
+
 #include "ReplaceAssert.h"
 #include "Replacer.h"
 
+// The args are non-empty strings:	@input_filename
+// 									@what_to_find
+// 									@to_replace_with
+// 1. Check the arg number
+// 2. Copy ugly C-style char* to NICE C++ strings
+// 3. Check values of args
+// 4. Try to open input file
+// 5. Try to create and open output file
+// 6. Perform replacement
+//
 int main(int ac, char **av) {
 
 	ReplaceAssert::CheckNumberOfArgs(ac);

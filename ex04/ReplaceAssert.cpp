@@ -9,11 +9,21 @@
 /*                                                     ###   ########.fr      */
 /*                                                                            */
 /******************************************************************************/
+/*
+			Description
+
+ 	assert() - is one of the simple mechanics of error handling
+ 		Basically, it takes boolean as an argument, and if it is false - stops
+ 		the execution of the program with the error.
+	passing the dtrong after && is a common way to output error message with
+ 		the explanations of what went wrong, because output message will contain
+ 		the line of failed assert, and therefore - message as well
+*/
+#include "ReplaceAssert.h"
 
 #include <cassert>
 #include <iosfwd>
 #include <fstream>
-#include "ReplaceAssert.h"
 
 void ReplaceAssert::CheckNumberOfArgs(int ac) {
 	assert(ac == 4 && "arguments must be one filename and two strings");

@@ -14,7 +14,9 @@
 #define EX04_REPLACEASSERT_H
 
 #include <string>
-
+// Utility class that wraps all interactions with assert mechanic
+// into functions with comprehensible names
+//
 class ReplaceAssert {
  public:
 	static void CheckNumberOfArgs(int ac);

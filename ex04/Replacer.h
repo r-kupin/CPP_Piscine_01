@@ -13,14 +13,12 @@
 #ifndef EX04_REPLACER_H
 #define EX04_REPLACER_H
 
-
 #include <iosfwd>
 
 class Replacer {
-public:
+ public:
 	static void Replace(std::ifstream& inp, std::ofstream& out,
-				 const std::string& s1, const std::string& s2);
+				 				const std::string& s1, const std::string& s2);
 };
-
 
 #endif //EX04_REPLACER_H
