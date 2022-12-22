@@ -15,7 +15,7 @@
 
 NAME = replace
 
-SRCS = main.cpp
+SRCS = main.cpp  ReplaceAssert.cpp  Replacer.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

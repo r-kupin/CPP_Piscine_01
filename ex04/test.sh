@@ -19,10 +19,6 @@ echo "attempting with nonexistent filename:"
 echo "  ./replace aa bb cc"
 ./replace aa bb cc
 
-echo "attempting with space-empty string:"
-echo "  ./replace aa \" \" cc"
-./replace aa " " cc
-
 echo "attempting with an empty string:"
 echo "  ./replace aa \"\" cc"
 ./replace aa "" cc

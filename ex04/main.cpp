@@ -10,41 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cassert>
 #include <iosfwd>
 #include <fstream>
 #include <iostream>
 #include "ReplaceAssert.h"
-
-void replace(std::ifstream& inp, std::ofstream& out,
-			 const std::string& s1, const std::string& s2) {
-	int repl_count = 0;
-	size_t i = 0;
-	size_t j;
-
-	std::string buffer(s1.length(), ' ');
-
-	while (inp >> std::noskipws >> buffer.at(i)) {
-		while ( i < s1.length() - 1 && buffer.at(i) == s1.at(i)) {
-			inp >> std::noskipws >> buffer.at(++i);
-		}
-		if (buffer == s1) {
-				out << s2;
-				repl_count++;
-		} else {
-			j = 0;
-			while (j <= i) {
-				out << buffer.at(j);
-				buffer.at(j) = ' ';
-				j++;
-			}
-		}
-		i = 0;
-	}
-	inp.close();
-	out.close();
-	std::cout << repl_count << " replacements were performed" << std::endl;
-}
+#include "Replacer.h"
 
 int main(int ac, char **av) {
 
@@ -67,6 +37,6 @@ int main(int ac, char **av) {
 
 	ReplaceAssert::CheckOutputFile(f_out);
 
-	replace(f_in, f_out, s1, s2);
+	Replacer::Replace(f_in, f_out, s1, s2);
 	return 0;
 }
