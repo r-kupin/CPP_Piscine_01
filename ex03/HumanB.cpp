@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <utility>
 #include "HumanB.hpp"
 
+#include <iostream>
+#include <utility>
+
 HumanB::HumanB(std::string name)
-: name_(std::move(name)), weapon_(nullptr){}
+: name_(std::move(name)), weapon_(nullptr) {}
 
 void HumanB::attack() const {
 	if (!weapon_) {

@@ -11,6 +11,7 @@
 /******************************************************************************/
 
 #include "Weapon.hpp"
+
 #include <utility>
 
 Weapon::Weapon(std::string type)
