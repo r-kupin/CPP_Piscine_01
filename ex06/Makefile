@@ -15,7 +15,7 @@
 
 NAME = karenFilter
 
-SRCS = main.cpp Karen.hpp Karen.cpp
+SRCS = main.cpp Karen.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
