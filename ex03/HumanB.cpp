@@ -16,7 +16,7 @@
 #include <utility>
 
 HumanB::HumanB(std::string name)
-: name_(std::move(name)), weapon_(nullptr) {}
+: weapon_(nullptr),  name_(std::move(name)) {}
 
 void HumanB::attack() const {
 	if (!weapon_) {

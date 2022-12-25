@@ -17,7 +17,7 @@
 #include "HumanA.hpp"
 
 HumanA::HumanA(std::string name, Weapon& weapon)
-: name_(std::move(name)), weapon_(weapon) {}
+: weapon_(weapon), name_(std::move(name)) {}
 
 void HumanA::attack() const {
 	std::cout << name_ << " attacks with his " << weapon_.GetType() << std::endl;
