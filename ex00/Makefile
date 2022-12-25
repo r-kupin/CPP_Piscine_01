@@ -15,7 +15,7 @@
 
 NAME = BraiiiiiiinnnzzzZ
 
-SRCS = main.cpp Zombie.cpp Zombie.hpp newZombie.cpp randomChump.cpp
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
