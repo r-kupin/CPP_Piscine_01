@@ -9,7 +9,7 @@
 /*   Updated: 2022/12/07 00:15:09 by rokupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+/**
 		Description
  	When writing a C++ code it is a GOOD idea to use C++ approach, and not C.
  	C++ is about objects and their methods, that make code more reader-friendly.
@@ -41,7 +41,7 @@
 			pointer at low level.
 			The rationale for this is quite simple: raw pointers which own
 			memory introduce a source of error. And these errors are prolific in
-			existing software: memory leaks and double deletion – both a direct
+			existing software: memory leaks and double deletion – both a direct
 			consequence of unclear resource ownership (but going in opposite
 			direction).
 			This problem can be entirely eliminated, at virtually no cost, by
@@ -52,7 +52,7 @@
     	Most uses of pointers in C++ are unnecessary.
 			Unlike other languages, C++ has very strong support for value
 			semantics and simply doesn’t need the indirection of pointers.
-			This wasn’t immediately realised – historically, C++ was invented
+			This wasn’t immediately realised – historically, C++ was invented
 			to facilitate easy object orientation in C, and relied heavily on
 			constructing object graphs which were connected by pointers. But in
 			modern C++, this paradigm is rarely the best choice, and modern C++
@@ -99,12 +99,12 @@
 				Quite a complicated thing to explain, but it basically allows to
 				return locally(stack)-allocated object or temporary.
 				Like in C we ran write:
-					int val = 5;
+			@code	int val = 5;
 					return(val);
 					or
-					return(5);
+					return(5); @endcode
 				In C++ we can write:
-					return (Object(" Yo, Im on a stack ;D "));
+			@code	return (Object(" Yo, Im on a stack ;D ")); @endcode
 				Which is a cleaner way that dealing with "return arguments";
 
 		In contrary, stack size is limited to a few Mb's so it is better to use
@@ -117,21 +117,25 @@
 */
 
 #include <vector>
+#include <sstream>
 #include "Zombie.hpp"
 
 Zombie *Zombie::zombieHorde(int N, std::string name) {
 	Zombie *zombies  = new Zombie[N];
 
-	for (int i = 0; i < N; ++i) {
-		zombies[i].SetName(name + " #" + std::to_string(i));/* ugly as hell */
+	std::stringstream ss;
+	for (int i = 0; i < N; ++i, ss.str("")) {
+		ss << i;
+		zombies[i].SetName(name + " #" + ss.str());/* ugly as hell */
 	}
 	return zombies;
 }
 
-// as far as $name is copied anyways - we can just move it
-// vector initializing with creating an object, and then filling the vector
-// with copies of this object. Then object gets discarded.
-std::vector<Zombie> Zombie:: ZombieHordeAsItShouldBe(int N, std::string name) {
-	return (std::vector<Zombie> (N, Zombie(std::move(name))));
-}
+/** as far as @param name is copied anyways - we can just move it
+ * vector initializing with creating an object, and then filling the vector
+ * with copies of this object. Then object gets discarded.
+ */
+//std::vector<Zombie> Zombie:: ZombieHordeAsItShouldBe(int N, std::string name) {
+//	return (std::vector<Zombie> (N, Zombie(std::move(name))));
+//}
 

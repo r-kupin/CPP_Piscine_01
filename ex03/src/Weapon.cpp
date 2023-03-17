@@ -14,8 +14,8 @@
 
 #include <utility>
 
-Weapon::Weapon(std::string type)
-:type_(std::move(type)) {}
+Weapon::Weapon(const std::string& type)
+:type_(type) {}
 
 const std::string & Weapon::GetType() const {
 	return type_;

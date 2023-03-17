@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rokupin <rokupin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 00:11:43 by rokupin           #+#    #+#             */
-/*   Updated: 2022/12/07 00:11:44 by rokupin          ###   ########.fr       */
+/*   Created: 2022/12/07 00:16:54 by rokupin           #+#    #+#             */
+/*   Updated: 2022/12/07 00:16:56 by rokupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include "Weapon.hpp"
 
-#include <iostream>
-#include <utility>
+class HumanA {
+public:
+	HumanA(const std::string& name, Weapon& weapon);
 
-// the name argument will newer used anywhere afterwards, so it is a good idea
-// to move() it to the rvalue constructor
-Zombie *Zombie::newZombie(std::string name) {
-	std::cout << "newZombie() is resurrecting " + name << std::endl;
-	return (new Zombie(std::move(name)));
-}
+	void attack() const;
+private:
+	Weapon& weapon_;
+	std::string name_;
+};

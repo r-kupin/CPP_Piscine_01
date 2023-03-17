@@ -9,7 +9,7 @@
 /*   Updated: 2022/12/07 00:16:09 by rokupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+/**
 		Description
 	So, basically, it is all about showing a difference between the pointer and
  	a reference. Here's what stackoverflow says about that:

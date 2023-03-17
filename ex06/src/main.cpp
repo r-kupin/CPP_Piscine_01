@@ -17,15 +17,15 @@
 
 int GetLevelPriority(const std::string& kLevel){
 	if (kLevel == "ERROR")
-		return ERROR_N;
+		return kKarenLevelError;
 	else if (kLevel == "WARNING")
-		return WARNING_N;
+		return kKarenLevelWarning;
 	else if (kLevel == "INFO")
-		return INFO_N;
+		return kKarenLevelInfo;
 	else if (kLevel == "DEBUG")
-		return DEBUG_N;
+		return kKarenLevelDebug;
 	else
-		return UNDEFINED_N;
+		return kKarenLevelUndefined;
 }
 
 void SysMsg(const std::string& msg){
@@ -43,11 +43,11 @@ int main(int ac, char **av) {
 	Karen karen;
 
 	switch (GetLevelPriority(kLevel)){
-		case UNDEFINED_N : karen.complain("UNDEFINED");
+		case kKarenLevelUndefined : karen.complain("UNDEFINED");
 			break;
-		case DEBUG_N : SysMsg("DEBUG"); karen.complain("DEBUG"); endl();
-		case INFO_N : SysMsg("INFO"); karen.complain("INFO"); endl();
-		case WARNING_N : SysMsg("WARNING"); karen.complain("WARNING"); endl();
+		case kKarenLevelDebug : SysMsg("DEBUG"); karen.complain("DEBUG"); endl();
+		case kKarenLevelInfo : SysMsg("INFO"); karen.complain("INFO"); endl();
+		case kKarenLevelWarning : SysMsg("WARNING"); karen.complain("WARNING"); endl();
 		default : SysMsg("ERROR"); karen.complain("ERROR"); endl();
 	}
 	return (0);

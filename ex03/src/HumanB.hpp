@@ -15,7 +15,7 @@
 
 class HumanB {
 public:
-	explicit HumanB(std::string name);
+	explicit HumanB(const std::string& name);
 
 	void attack() const;
 

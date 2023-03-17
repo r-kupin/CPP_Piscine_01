@@ -54,13 +54,18 @@
 class Zombie{
 	public:
 		explicit Zombie(const std::string& name);	/* lvalue arg-copy constructor */
-		explicit Zombie(std::string&& name);		/* rvalue arg-move constructor */
+//		explicit Zombie(std::string&& name);		/* rvalue arg-move constructor */
 		Zombie(const Zombie& zombie);				/* actually copy constructor */
 
 		~Zombie();
 
+
 		static Zombie*	newZombie(std::string name);
+		/* is ambiguous with previous declaration */
+//		static Zombie*	newZombie(const std::string &name);
 		static void		randomChump(std::string name);
+		/* is ambiguous with previous declaration */
+//		static void		randomChump(const std::string &name);
 
 		void	announce() const;
 	private:

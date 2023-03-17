@@ -9,7 +9,7 @@
 /*                                                     ###   ########.fr      */
 /*                                                                            */
 /******************************************************************************/
-/*
+/**
 		Description
 
 	So, this is all about member-function-pointers
@@ -56,46 +56,73 @@
 #ifndef EX05_KAREN_HPP
 #define EX05_KAREN_HPP
 
-// Levels of priority (less number - higher priority) & indexes in array
-#define ERROR_N 0
-#define WARNING_N 1
-#define INFO_N 2
-#define DEBUG_N 3
-#define UNDEFINED_N 4
-
-// Colorful output is nice :)
-#define DEBUG_COLOR "\033[34m"
-#define INFO_COLOR "\033[32m"
-#define WARNING_COLOR "\033[33m"
-#define ERROR_COLOR "\033[31m"
-#define RESET_COLOR "\033[0m"
-
-#define KAREN_LEVELS 5
-
-//Call MPTF from the pointer of an object
+/**
+ * A macro that calls a member function pointer on an object pointer.
+ * @param object A pointer to the object on which to call the member  function.
+ * @param ptr A pointer to the member function to call on the object.
+ * @note This macro is meant to be used with member function pointers that
+ * take no arguments and return void.
+ */
 #define CALL_MEM_FN_PTR_ON_PTR(object, ptr) ((object)->*(ptr))
-//Call MPTF from the object itself (this should be dereferenced)
+
+/**
+ * A macro that calls a member function pointer on an object (this should
+ * be dereferenced)
+ * @param object The object on which to call the member function.
+ * @param ptr A pointer to the member function to call on the object.
+ * @note This macro is meant to be used with member function pointers that
+ * take no arguments and return void.
+ * @note This macro is different from CALL_MEM_FN_PTR_ON_PTR in that it takes an
+ * object by value rather than by pointer.
+ */
 #define CALL_MEM_FN_PTR_ON_OBJ(object, ptr) ((object).*(ptr))
 
 #include <string>
-#include <array>
+
+const static int kKarenLevelError = 0;
+const static int kKarenLevelWarning = 1;
+const static int kKarenLevelInfo = 2;
+const static int kKarenLevelDebug = 3;
+const static int kKarenLevelUndefined = 4;
+const static int kKarenLevelsAmount = 5;
+
+// Colorful output is nice :)
+const static std::string kColorDebug = "\033[34m";
+const static std::string kColorInfo = "\033[32m";
+const static std::string kColorWarn = "\033[33m";
+const static std::string kColorError = "\033[31m";
+const static std::string kColorReset = "\033[0m";
 
 class Karen {
+	/**
+	 * Typedef for a pointer to a const member function of the Karen class that
+	 * takes no arguments and returns void.
+	 * Used as a type for storing member function pointers in the MyPair structure.
+	 */
 	typedef void (Karen::*KarenF)() const;
-// Small "Pair" structure to store MPTFs and their names
+
+	/**
+	 * A structure to store a member function pointer and the corresponding
+	 * level name as a pair.
+	 * Used to initialize the karen_methods_array_ array in the Karen class.
+	 */
 	typedef struct MyPairT {
 		KarenF func;
 		std::string level_name;
 	} MyPair;
-// Typedef for iterator. It is convinient to use 'auto' keyword, but we can't, so
-// I made this to make my code a bit less ugly
-	typedef std::array<MyPair, KAREN_LEVELS>::iterator LevelsPtr;
+
+	/**
+	 * Typedef for iterator. It is convinient to use 'auto' keyword, but we
+	 * can't, so I made this to make my code a bit less ugly
+	 */
+//	typedef std::array<MyPair, kKarenLevelsAmount>::iterator LevelsPtr;
 public:
 	Karen();
 
 	void complain(const std::string &level);
 private:
-	std::array<MyPair, KAREN_LEVELS> karen_methods_;
+//	std::array<MyPair, kKarenLevelsAmount> karen_methods_array_;
+	MyPair karen_methods_[kKarenLevelsAmount];
 
 	void debug() const;
 	void info() const;

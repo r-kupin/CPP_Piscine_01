@@ -17,16 +17,17 @@
 #include "ReplaceAssert.h"
 #include "Replacer.h"
 
-// The args are non-empty strings:	@input_filename
-// 									@what_to_find
-// 									@to_replace_with
-// 1. Check the arg number
-// 2. Copy ugly C-style char* to NICE C++ strings
-// 3. Check values of args
-// 4. Try to open input file
-// 5. Try to create and open output file
-// 6. Perform replacement
-//
+/** The args are non-empty strings:	@param input_filename
+ * 									@param what_to_find
+ * 									@param to_replace_with
+ * @brief
+ * 1. Check the arg number
+ * 2. Copy ugly C-style char* to NICE C++ strings
+ * 3. Check values of args
+ * 4. Try to open input file
+ * 5. Try to create and open output file
+ * 6. Perform replacement
+ */
 int main(int ac, char **av) {
 
 	ReplaceAssert::CheckNumberOfArgs(ac);
@@ -38,13 +39,13 @@ int main(int ac, char **av) {
 	ReplaceAssert::CheckArgValues(filename, s1, s2);
 
 	std::ifstream f_in;
-	f_in.open(filename);
+	f_in.open(filename.data());
 
 	ReplaceAssert::CheckInputFile(f_in);
 
 	filename.append(".replace");
 	std::ofstream f_out;
-	f_out.open(filename);
+	f_out.open(filename.data());
 
 	ReplaceAssert::CheckOutputFile(f_out);
 

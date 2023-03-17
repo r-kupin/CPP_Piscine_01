@@ -25,11 +25,11 @@ Zombie::Zombie(const std::string& name)
 				 " is raised up with a copied name*" << std::endl;
 }
 
-Zombie::Zombie(std::string &&name)
-		:name_(name){
-	std::cout << "*" + name_+
-				 " is raised up with a moved name*" << std::endl;
-}
+//Zombie::Zombie(std::string &&name)
+//		:name_(name){
+//	std::cout << "*" + name_+
+//				 " is raised up with a moved name*" << std::endl;
+//}
 
 Zombie::~Zombie() {
 	std::cout << "*" + name_ + " finally goes to rest in peace*" << std::endl;

@@ -9,7 +9,8 @@
 /*   Updated: 2022/12/07 00:11:55 by rokupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+/**
+
 		Google C++ Style Guide
 
  		REFERENCES VS POINTERS
@@ -25,20 +26,19 @@
 		always alias objects, not a dereferenced NULL pointer).
 
 		Description
+		@code std::move constexpr std::remove_reference_t<T>&& move( T&& t ) noexcept; @endcode
 
-	1.  std::move
- 			constexpr std::remove_reference_t<T>&& move( T&& t ) noexcept;
  		Is used to indicate that an object t may be "moved from", i.e. allowing
  		the efficient transfer of resources from t to another object. It is
  		widely used to initialize non-primitive value from an existing rvalue,
  		similar to creating an object with move-constructor
  			Use:
-				Zombie zombie("Andy");
+				@code Zombie zombie("Andy"); @endcode
  			Implementation examples:
- 				Zombie::Zombie(std::string name): name_(name){};
+ 				@code Zombie::Zombie(std::string name): name_(name){}; @endcode
  					*BAD* - the "name" is allocated, then name's content
 					is copied to it, then "Andy" rvalue gets destroyed.
-				Zombie::Zombie(std::string name): name(std::move(name)) {};
+				@code Zombie::Zombie(std::string name): name(std::move(name)){}; @endcode
 					*GOOD* - std::move() doesn't actually move anything.
 					It changes an expression from being an lvalue (such as a
 					named variable) to being an xvalue. An xvalue tells the
@@ -54,21 +54,29 @@
 
 int main(){
 	const std::string kZombieName = "Andy";
-	std::string ZombieNameThatWeWillNeverNeedAfterwards = "Danny";
+//	std::string ZombieNameThatWeWillNeverNeedAfterwards = "Danny";
 
-	/* stack-allocated */
-	//	COPY-ARG constructor is used, cause constant is an lvalue and can't be converted
-	//	with move() - it will cause a compile-time error
+	/**	@brief directly stack-allocated with copy-constructor
+	 *	stack-allocated	COPY-ARG constructor is used, cause constant is an
+	 *	lvalue and can't be converted with move() - it will cause a
+	 *	compile-time error
+	 */
 	Zombie AndyTheZombie(kZombieName);
 	AndyTheZombie.announce();
-	//	MOVE-ARG constructor is used, cause non-constant lvalue is explicitly converted
-	//	with move() - which allows us to avoid copying
-	Zombie DannyTheZombie(std::move(ZombieNameThatWeWillNeverNeedAfterwards));
-	DannyTheZombie.announce();
-	//	MOVE-ARG constructor is used, cause "Berty" is a temporary, so is an rvalue
-	//	by default
-	Zombie BertyTheTempValueNamedZombie("Berty");
-	BertyTheTempValueNamedZombie.announce();
+
+	/** @brief directly stack-allocated with move-constructor
+	 *	MOVE-ARG constructor is used, cause non-constant lvalue is explicitly
+	 *	converted with move() - which allows us to avoid copying
+	 */
+//	Zombie DannyTheZombie(std::move(ZombieNameThatWeWillNeverNeedAfterwards));
+//	DannyTheZombie.announce();
+
+	/** @brief directly stack-allocated with move-constructor
+	 *	MOVE-ARG constructor is used, cause "Berty" is a temporary, so is an
+	 *	rvalue by default
+	 */
+//	Zombie BertyTheTempValueNamedZombie("Berty");
+//	BertyTheTempValueNamedZombie.announce();
 
 	std::string NonConstantZombieName = "Johny";
 
@@ -76,7 +84,7 @@ int main(){
 	Zombie *JohnyTheHeapOne = Zombie::newZombie(NonConstantZombieName);
 	JohnyTheHeapOne->announce();
 
-//	we can still use it!
+	/* we can still use it! */
 	NonConstantZombieName = "Billy";
 
 	/* stack-allocated and removed right afterwards*/

@@ -1,24 +1,28 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                         :::      ::::::::  */
-/*    Replacer.h                                         :+:      :+:    :+:  */
+/*    ReplaceAssert.h                                    :+:      :+:    :+:  */
 /*                                                     +:+ +:+         +:+    */
 /*    By: rokupin <rokupin@student.42.fr>            +#+  +:+       +#+       */
 /*                                                 +#+#+#+#+#+   +#+          */
-/*    Created: 2022/12/22 15:37:36 by rokupin           #+#    #+#            */
+/*    Created: 2022/12/22 12:54:08 by rokupin           #+#    #+#            */
 /*                                                     ###   ########.fr      */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef EX04_REPLACER_H
-#define EX04_REPLACER_H
+#ifndef EX04_REPLACEASSERT_H
+#define EX04_REPLACEASSERT_H
 
-#include <iosfwd>
-
-class Replacer {
- public:
-	static void Replace( std::ifstream& inp, std::ofstream& out,
-							const std::string& s1, const std::string& s2);
+#include <string>
+/** @struct wraps all interactions with assert mechanic
+ *	into functions with comprehensible names
+ */
+struct ReplaceAssert {
+	static void CheckNumberOfArgs(int ac);
+	static void CheckArgValues(const std::string &filename,
+								const std::string &s1, const std::string &s2);
+	static void CheckInputFile(const std::ifstream &f_in);
+	static void CheckOutputFile(const std::ofstream &f_out);
 };
 
-#endif //EX04_REPLACER_H
+#endif //EX04_REPLACEASSERT_H

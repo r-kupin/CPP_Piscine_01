@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector>
+//#include <vector>
 #include "Zombie.hpp"
 
 int main(){
@@ -23,15 +23,17 @@ int main(){
 	}
 //	convinient way to deallocate [] array
 	delete[] horde;
-//	How it actually works
-	std::vector<Zombie> real_horde = Zombie::ZombieHordeAsItShouldBe(kHordeSize, "Andy");
-//	Iterating by values
-	for (Zombie z  : real_horde) {
-		z.announce();
-	}
-//	Iterating by const reference
-	for (const auto& z  : real_horde) {
-		z.announce();
-	}
+
+	/* How it actually works */
+//	std::vector<Zombie> real_horde = Zombie::ZombieHordeAsItShouldBe(kHordeSize, "Andy");
+
+	/* Iterating by values */
+//	for (Zombie z  : real_horde) {
+//		z.announce();
+//	}
+	/* Iterating by const reference */
+//	for (const auto& z  : real_horde) {
+//		z.announce();
+//	}
 	return 0;
 }

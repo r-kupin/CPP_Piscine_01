@@ -35,6 +35,7 @@
 	7. Const references can be bound to temporaries. Pointers cannot. This makes
 		const & more convenient to use in argument lists and so forth
 */
+
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 #include "Weapon.hpp"
