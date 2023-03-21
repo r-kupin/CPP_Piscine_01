@@ -13,23 +13,15 @@
 #
 
 NAME = ex00
-#NAME_LIB = $(NAME)_lib
 ASAN = $(NAME)_asan
-#TEST = $(NAME)_test
 
 SRCS = src/main.cpp  src/newZombie.cpp  src/randomChump.cpp  src/Zombie.cpp
-#LIB_SRCS = src/newZombie.cpp  src/randomChump.cpp  src/Zombie.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-#LIB_OBJS = $(LIB_SRCS:.cpp=.o)
-#TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 
 CXX = clang++
-#GXX = g++
-#LIB_CXX = ar rvs
 
 CXXFLAGS = -Wall -Wextra -Werror  -std=c++03
-#GXXFLAGS = -lgtest -lgtest_main -pthread
 ASANFLAGS = -g -fsanitize=address
 
 all: $(NAME)
@@ -67,8 +59,6 @@ clean:
 
 fclean: clean
 	@rm -fr $(NAME)
-	@#rm -fr $(TEST)
-	@#rm -fr $(NAME_LIB)
 	@rm -fr $(ASAN)
 
 re:

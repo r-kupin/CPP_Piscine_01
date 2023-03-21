@@ -12,30 +12,19 @@
 #           |__/      |__/                              
 #
 
-
 NAME = ex03
-#NAME_LIB = $(NAME)_lib
 ASAN = $(NAME)_asan
-#TEST = $(NAME)_test
 
 SRCS = src/main.cpp \
 		src/Weapon.cpp \
 		src/HumanA.cpp \
 		src/HumanB.cpp
-#LIB_SRCS = src/Weapon.cpp \
-            #src/HumanA.cpp \
-            #src/HumanB.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-#LIB_OBJS = $(LIB_SRCS:.cpp=.o)
-#TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 
 CXX = clang++
-#GXX = g++
-#LIB_CXX = ar rvs
 
 CXXFLAGS = -Wall -Wextra -Werror  -std=c++03
-#GXXFLAGS = -lgtest -lgtest_main -pthread
 ASANFLAGS = -g -fsanitize=address
 
 all: $(NAME)
@@ -48,9 +37,6 @@ valgrnd: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-#test: $(TEST)
-#	./$(TEST)
 
 $(ASAN): $(OBJS)
 	$(CXX) $(ASANFLAGS) $(CXXFLAGS) $(OBJS) -o $(ASAN)
@@ -76,8 +62,6 @@ clean:
 
 fclean: clean
 	@rm -fr $(NAME)
-	@#rm -fr $(TEST)
-	@#rm -fr $(NAME_LIB)
 	@rm -fr $(ASAN)
 
 re:
