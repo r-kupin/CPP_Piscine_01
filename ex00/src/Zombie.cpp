@@ -16,7 +16,8 @@
 
 Zombie::Zombie(const Zombie &zombie)
 		:name_(zombie.name_){
-	std::cout << "*" + name_+ " is CLONNED by the copy-constructor" << std::endl;
+	std::cout << "* The new zombie " + name_+ " is CLONNED in the Image and " +
+    "Likeness of the " + zombie.name_ + " with copy-constructor " << std::endl;
 }
 
 Zombie::Zombie(const std::string& name)
@@ -25,11 +26,21 @@ Zombie::Zombie(const std::string& name)
 				 " is raised up with a copied name*" << std::endl;
 }
 
+//Zombie::Zombie(Zombie &&zombie)
+//        :name_(zombie.name_){
+//    std::cout << "Resource from the old " << zombie.name_ << " is TRANSFERRED "
+//    "to construct new zombie "<< name_ << " with move-constructor" << std::endl;
+//}
+//
 //Zombie::Zombie(std::string &&name)
 //		:name_(name){
 //	std::cout << "*" + name_+
 //				 " is raised up with a moved name*" << std::endl;
 //}
+
+Zombie::Zombie() {
+    std::cout << "* noname is raised up by the noarg-constructor*" << std::endl;
+}
 
 Zombie::~Zombie() {
 	std::cout << "*" + name_ + " finally goes to rest in peace*" << std::endl;
@@ -38,4 +49,3 @@ Zombie::~Zombie() {
 void Zombie::announce() const {
 	std::cout << name_ + ": BraiiiiiiinnnzzzZ..."<< std::endl;
 }
-

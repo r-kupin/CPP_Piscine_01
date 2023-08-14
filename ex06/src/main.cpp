@@ -13,19 +13,19 @@
 #include <iostream>
 #include <cassert>
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int GetLevelPriority(const std::string& kLevel){
 	if (kLevel == "ERROR")
-		return kKarenLevelError;
+		return kLevelError;
 	else if (kLevel == "WARNING")
-		return kKarenLevelWarning;
+		return kLevelWarning;
 	else if (kLevel == "INFO")
-		return kKarenLevelInfo;
+		return kLevelInfo;
 	else if (kLevel == "DEBUG")
-		return kKarenLevelDebug;
+		return kLevelDebug;
 	else
-		return kKarenLevelUndefined;
+		return kLevelUndefined;
 }
 
 void SysMsg(const std::string& msg){
@@ -40,15 +40,15 @@ int main(int ac, char **av) {
 	assert(ac == 2 && "The program should be executed with 1 argument,"
 				   "and it must be a string");
 	const std::string& kLevel = av[1];
-	Karen karen;
+	Harl Harl;
 
 	switch (GetLevelPriority(kLevel)){
-		case kKarenLevelUndefined : karen.complain("UNDEFINED");
+		case kLevelUndefined : Harl.complain("UNDEFINED");
 			break;
-		case kKarenLevelDebug : SysMsg("DEBUG"); karen.complain("DEBUG"); endl();
-		case kKarenLevelInfo : SysMsg("INFO"); karen.complain("INFO"); endl();
-		case kKarenLevelWarning : SysMsg("WARNING"); karen.complain("WARNING"); endl();
-		default : SysMsg("ERROR"); karen.complain("ERROR"); endl();
+		case kLevelDebug : SysMsg("DEBUG"); Harl.complain("DEBUG"); endl();
+		case kLevelInfo : SysMsg("INFO"); Harl.complain("INFO"); endl();
+		case kLevelWarning : SysMsg("WARNING"); Harl.complain("WARNING"); endl();
+		default : SysMsg("ERROR"); Harl.complain("ERROR"); endl();
 	}
 	return (0);
 }

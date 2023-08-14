@@ -21,7 +21,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CXX = clang++
 
-CXXFLAGS = -Wall -Wextra -Werror  -std=c++03
+CXXFLAGS = -Wall -Wextra -Werror  -std=c++98
 ASANFLAGS = -g -fsanitize=address
 
 all: $(NAME)
@@ -44,14 +44,8 @@ $(NAME): $(OBJS)
 $(NAME_LIB): $(LIB_OBJS)
 	$(LIB_CXX) $(NAME_LIB) $(LIB_OBJS)
 
-$(TEST): $(TEST_OBJS) $(NAME_LIB)
-	$(GXX) $(GXXFLAGS) $(TEST_OBJS) $(NAME_LIB)  -o $(TEST)
-
 src/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-test/%.o: test/%.cpp
-	$(GXX) $(GXXFLAGS) -c $< -o $@
 
 clean:
 	@rm -fr $(OBJS)

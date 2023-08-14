@@ -12,21 +12,21 @@
 
 #include <iostream>
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int main() {
-	Karen karen;
+	Harl k;
 
 	std::cout << "=====ERROR=====" << std::endl;
-	karen.complain("ERROR");
+	k.complain("ERROR");
 	std::cout << "=====WARNING=====" << std::endl;
-	karen.complain("WARNING");
+	k.complain("WARNING");
 	std::cout << "=====INFO=====" << std::endl;
-	karen.complain("INFO");
+	k.complain("INFO");
 	std::cout << "=====DEBUG=====" << std::endl;
-	karen.complain("DEBUG");
+	k.complain("DEBUG");
 	std::cout << "=====RAMPAGE=====" << std::endl;
-	karen.complain("RAMPAGE");
+	k.complain("RAMPAGE");
 
 	return (0);
 }

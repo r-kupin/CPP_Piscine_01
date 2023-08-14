@@ -30,6 +30,12 @@ Zombie::Zombie(const std::string& name)
 				" is raised up with a copied name*" << std::endl;
 }
 
+//Zombie::Zombie(Zombie &&zombie)
+//        :name_(zombie.name_){
+//    std::cout << "Resource from the old " << zombie.name_ << " is TRANSFERRED "
+//    "to construct new zombie "<< name_ << " with move-constructor" << std::endl;
+//}
+//
 //Zombie::Zombie(std::string &&name)
 //		:name_(name), id_(zombies_created_){
 //	zombies_created_++;

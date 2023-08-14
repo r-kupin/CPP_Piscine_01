@@ -13,7 +13,7 @@
 #include "Zombie.hpp"
 
 #include <iostream>
-#include <utility>
+//#include <utility>
 
 /**	@param name created in this function is sort of wasted, cause it gets
  *	created upon the function call and destroyed after the return();
@@ -32,8 +32,8 @@ Zombie *Zombie::newZombie(std::string name) {
 //	return (new Zombie(std::move(name)));
 //}
 
-/** @param name is a const reference - it's not getting copied upon method call
- */
+///** @param name is a const reference - it's not getting copied upon method call
+// */
 //Zombie *Zombie::newZombie(const std::string &name) {
 //	std::cout << "newZombie() is resurrecting " + name << std::endl;
 //	return (new Zombie(name));

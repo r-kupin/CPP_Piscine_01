@@ -19,7 +19,7 @@ SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror  -std=c++98
 
 all: $(NAME)
 
@@ -30,10 +30,10 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm $(NAME)
+	rm -rf $(NAME)
 
 re:
 	@$(MAKE) fclean

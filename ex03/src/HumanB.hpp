@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HUMAN_B_HPP
+#define HUMAN_B_HPP
+
 #include <string>
 #include "Weapon.hpp"
 
@@ -24,3 +27,5 @@ private:
 	Weapon *weapon_;
 	std::string name_;
 };
+
+#endif // HUMAN_B_HPP

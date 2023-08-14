@@ -27,8 +27,6 @@
     			Smart pointers.
     			Standard containers.
     			Move semantics.
-    			Lambdas with captures.
-    			As of C++20: Ranges.
 		Yes, many of these use pointers under the hood. Your program, however,
 		doesn't see them.
 
@@ -82,51 +80,20 @@
 				--------------
  	So, basically - use std::vector as a general case, or std::array if you really
  	want, and if it's size is known at the compile time
-
- 	- Heap vs Stack allocation
-		Again, after a multiple articles on that topic I came to the conclusion
-		that as a general case it is preferable to use stack because:
-		    First, the obvious, and less important one: Heap allocations are
-		    	slow. Stack allocations are fast.
-    		Second, and much more important is RAII. Because the stack-allocated
-    			version is automatically cleaned up, it is useful. Its destructor
-    			is automatically called, which allows you to guarantee that any
-    			resources allocated by the class get cleaned up. This is essentialy
-    			how you avoid memory leaks in C++. You avoid them by never calling
-    			delete yourself, instead wrapping it in stack-allocated objects which
-    			call delete internally, typicaly in their destructor.
-			Third - Return value optimization.
-				Quite a complicated thing to explain, but it basically allows to
-				return locally(stack)-allocated object or temporary.
-				Like in C we ran write:
-			@code	int val = 5;
-					return(val);
-					or
-					return(5); @endcode
-				In C++ we can write:
-			@code	return (Object(" Yo, Im on a stack ;D ")); @endcode
-				Which is a cleaner way that dealing with "return arguments";
-
-		In contrary, stack size is limited to a few Mb's so it is better to use
-			a heap for a really large objects, or when dealing with recursion
-
- 	So as a general case - it is better to use stack as a general case, unless
- 		you want to do some trickery such as change size of the variable(nasty),
- 		or have a manual control of the allocated memory's lifetime(also nasty),
- 		or to store really big chunks of data (ok, but rarely needed).
 */
 
 #include <vector>
 #include <sstream>
 #include "Zombie.hpp"
 
+    /* ugly as hell */
 Zombie *Zombie::zombieHorde(int N, std::string name) {
 	Zombie *zombies  = new Zombie[N];
 
 	std::stringstream ss;
 	for (int i = 0; i < N; ++i, ss.str("")) {
 		ss << i;
-		zombies[i].SetName(name + " #" + ss.str());/* ugly as hell */
+		zombies[i].SetName(name + " #" + ss.str());
 	}
 	return zombies;
 }

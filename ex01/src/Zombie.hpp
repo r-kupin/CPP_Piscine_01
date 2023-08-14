@@ -46,36 +46,37 @@
  		side-effects, which particularly means that it does not change the class's
  		internal state.
 */
-#ifndef EX00_ZOMBIE_H_
-#define EX00_ZOMBIE_H_
+#ifndef EX01_ZOMBIE_H_
+#define EX01_ZOMBIE_H_
 
 #include <string>
 #include <vector>
 
-class Zombie{
-	public:
-		explicit Zombie(const std::string& name);	/* lvalue arg-copy constructor */
-//		explicit Zombie(std::string&& name);		/* rvalue arg-move constructor */
-		Zombie(const Zombie& zombie);				/* actually copy constructor */
+class Zombie {
+public:
+    explicit Zombie(const std::string& name);	/* lvalue arg-copy constructor */
+//    explicit Zombie(std::string&& name);		/* rvalue arg-move constructor */
+    Zombie(const Zombie& zombie);				/* actually copy constructor */
+//		Zombie(Zombie&& zombie);				/* actually move constructor */
+    Zombie();
+    ~Zombie();
 
-		Zombie();
-		~Zombie();
-
-		static Zombie*	zombieHorde( int N, std::string name );
-	/* is ambiguous with previous declaration */
+    static Zombie*	zombieHorde( int N, std::string name );
+    static Zombie*	newZombie(std::string name);
+    /* is ambiguous with previous declaration */
 //		static Zombie*	newZombie(const std::string &name);
-	/* is ambiguous with previous declaration */
+    static void		randomChump(std::string name);
+    /* is ambiguous with previous declaration */
 //		static void		randomChump(const std::string &name);
-
+    /* is uses vector, so... */
 //		static std::vector<Zombie> ZombieHordeAsItShouldBe(int N, std::string name);
 
-		void	announce() const;
-		void	SetName(const std::string &name);
-	private:
-		static int zombies_created_;
+    void	announce() const;
+    void	SetName(const std::string &name);
+private:
+    static int zombies_created_;
 
-		std::string name_;
-		int 		id_;
+    std::string name_;
+    int 		id_;
 };
-
-#endif //EX00_ZOMBIE_H_
+#endif //EX01_ZOMBIE_H_

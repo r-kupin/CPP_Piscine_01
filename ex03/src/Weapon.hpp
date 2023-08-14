@@ -13,7 +13,6 @@
 #ifndef EX03_WEAPON_HPP
 #define EX03_WEAPON_HPP
 
-
 #include <string>
 
 class Weapon {

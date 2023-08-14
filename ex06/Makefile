@@ -15,13 +15,13 @@
 NAME = ex06
 ASAN = $(NAME)_asan
 
-SRCS = src/main.cpp src/Karen.cpp
+SRCS = src/main.cpp src/Harl.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = clang++
 
-CXXFLAGS = -Wall -Wextra -Werror  -std=c++03
+CXXFLAGS = -Wall -Wextra -Werror  -std=c++98
 ASANFLAGS = -g -fsanitize=address
 
 all: $(NAME)

@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                         :::      ::::::::  */
-/*    Karen.h                                            :+:      :+:    :+:  */
+/*    Harl.h                                             :+:      :+:    :+:  */
 /*                                                     +:+ +:+         +:+    */
 /*    By: rokupin <rokupin@student.42.fr>            +#+  +:+       +#+       */
 /*                                                 +#+#+#+#+#+   +#+          */
@@ -19,14 +19,14 @@
  		void (*PTF)() const; // PTF - is the name of the variable of the type
 				//	“pointer-to-function” or “pointer-to-static-member-function”
 	And pointer to member function would be:
- 		void (Karen::*PTMF)() const; // PTMF - is the name of the variable of
+ 		void (Harl::*PTMF)() const; // PTMF - is the name of the variable of
 									 //	the type “pointer-to-member-function”
 	The syntax is horrible, so it is convinient to use typedef's and macro's,
  	which lets us to use PTMF's just as simple variables.
 2. Making a typedef
- 		typedef void (Karen::*KarenF)() const;
- 	So, after that we can do whatever we want with Karen's PTMF's operating with
- 	them just like with common variables of type KarenF
+ 		typedef void (Harl::*HarlF)() const;
+ 	So, after that we can do whatever we want with Harl's PTMF's operating with
+ 	them just like with common variables of type HarlF
 3.	Defining a macro
 		A. #define CALL_MEM_FN_PTR_ON_PTR(object, ptr) ((object)->*(ptr))
 		B. #define CALL_MEM_FN_PTR_ON_OBJ(object, ptr) ((object).*(ptr))
@@ -37,7 +37,7 @@
 	Non-static member functions have a hidden parameter that corresponds to the
  	this pointer. The this pointer points to the instance data for the object.
  	So, when assigning we have to specify a class who owns the function:
-		KarenF func = &Karen::function_name;
+		HarlF func = &Harl::function_name;
 5. Use
  	Here the written macro comes to be helpful.
  	Use with macro:
@@ -48,13 +48,13 @@
 		((*this).*(func))();
 	BDSM-way: No macro, No typedef
 
-		void (Karen::*func)() const = &Karen::function;
+		void (Harl::*func)() const = &Harl::function;
 		((this)->*(func))();
 
 	Obviously, with macros and typedef it is way much comprehensible
 */
-#ifndef EX06_KAREN_HPP
-#define EX06_KAREN_HPP
+#ifndef EX05_HARL_HPP
+#define EX05_HARL_HPP
 
 /**
  * A macro that calls a member function pointer on an object pointer.
@@ -79,12 +79,12 @@
 
 #include <string>
 
-const static int kKarenLevelError = 0;
-const static int kKarenLevelWarning = 1;
-const static int kKarenLevelInfo = 2;
-const static int kKarenLevelDebug = 3;
-const static int kKarenLevelUndefined = 4;
-const static int kKarenLevelsAmount = 5;
+const static int kLevelError = 0;
+const static int kLevelWarning = 1;
+const static int kLevelInfo = 2;
+const static int kLevelDebug = 3;
+const static int kLevelUndefined = 4;
+const static int kLevelsAmount = 5;
 
 // Colorful output is nice :)
 const static std::string kColorDebug = "\033[34m";
@@ -93,21 +93,21 @@ const static std::string kColorWarn = "\033[33m";
 const static std::string kColorError = "\033[31m";
 const static std::string kColorReset = "\033[0m";
 
-class Karen {
+class Harl {
 	/**
-	 * Typedef for a pointer to a const member function of the Karen class that
+	 * Typedef for a pointer to a const member function of the Harl class that
 	 * takes no arguments and returns void.
 	 * Used as a type for storing member function pointers in the MyPair structure.
 	 */
-	typedef void (Karen::*KarenF)() const;
+	typedef void (Harl::*HarlF)() const;
 
 	/**
 	 * A structure to store a member function pointer and the corresponding
 	 * level name as a pair.
-	 * Used to initialize the karen_methods_array_ array in the Karen class.
+	 * Used to initialize the Harl_methods_array_ array in the Harl class.
 	 */
 	typedef struct MyPairT {
-		KarenF func;
+		HarlF func;
 		std::string level_name;
 	} MyPair;
 
@@ -115,14 +115,14 @@ class Karen {
 	 * Typedef for iterator. It is convinient to use 'auto' keyword, but we
 	 * can't, so I made this to make my code a bit less ugly
 	 */
-//	typedef std::array<MyPair, kKarenLevelsAmount>::iterator LevelsPtr;
+//	typedef std::array<MyPair, kHarlLevelsAmount>::iterator LevelsPtr;
 public:
-	Karen();
+	Harl();
 
 	void complain(const std::string &level);
 private:
-//	std::array<MyPair, kKarenLevelsAmount> karen_methods_array_;
-	MyPair karen_methods_[kKarenLevelsAmount];
+//	std::array<MyPair, kHarlLevelsAmount> Harl_methods_array_;
+	MyPair Harl_methods_[kLevelsAmount];
 
 	void debug() const;
 	void info() const;
@@ -131,4 +131,4 @@ private:
 	void undefined() const;
 };
 
-#endif //EX06_KAREN_HPP
+#endif //EX05_HARL_HPP

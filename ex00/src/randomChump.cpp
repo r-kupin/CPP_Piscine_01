@@ -13,10 +13,10 @@
 #include "Zombie.hpp"
 
 #include <iostream>
-#include <utility>
+//#include <utility>
 
 /** @brief Chump is stack-allocated, so will be removed automatically
-*	@param name - same as with newZombie()
+ *	@param name - same as with newZombie()
  */
 
 /* naive / dumb */

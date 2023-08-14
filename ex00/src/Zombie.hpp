@@ -9,8 +9,9 @@
 /*   Updated: 2022/12/07 00:12:01 by rokupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+/**
 		Google C++ Style Guide
+
 	- A class's public API must make clear whether the class is copyable,
  		move-only, or neither copyable nor movable. Support copying and/or moving
  		if these operations are clear and meaningful for your type.
@@ -32,8 +33,8 @@
     			returning a non-const reference, but that's rare), or they can't
     			safely be invoked concurrently.
 
-
  		Description
+
 	- & - Specifies, that given argument must be an lvalue reference.
  		Constructor that uses &-argument is called "Copy constructor", only
  		once copies resources on which an lvalue-reference points to, and
@@ -51,12 +52,14 @@
 
 #include <string>
 
-class Zombie{
+class Zombie {
 	public:
 		explicit Zombie(const std::string& name);	/* lvalue arg-copy constructor */
 //		explicit Zombie(std::string&& name);		/* rvalue arg-move constructor */
 		Zombie(const Zombie& zombie);				/* actually copy constructor */
+//		Zombie(Zombie&& zombie);				/* actually move constructor */
 
+		Zombie();
 		~Zombie();
 
 
