@@ -6,9 +6,10 @@
 /*   By: rokupin <rokupin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 00:11:54 by rokupin           #+#    #+#             */
-/*   Updated: 2022/12/07 00:11:55 by rokupin          ###   ########.fr       */
+/*   Updated: 2023/08/15 14:33:46 by rokupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 /**
 		Google C++ Style Guide
 
@@ -108,17 +109,17 @@
 #include "Zombie.hpp"
 
 int main(){
-////    -------------------- /* mandatory */
-//    /**	@brief directly stack-allocated with copy-constructor
-//     *	stack-allocated	COPY-ARG constructor is used, cause constant is an
-//     *	lvalue and can't be converted with move() - it will cause a
-//     *	compile-time error
-//     */
+//    -------------------- /* mandatory */
+    /**	@brief directly stack-allocated with copy-constructor
+     *	stack-allocated	COPY-ARG constructor is used, cause constant is an
+     *	lvalue and can't be converted with move() - it will cause a
+     *	compile-time error
+     */
     const std::string kZombieName = "Andy";
     Zombie AndyTheZombie(kZombieName);
 	AndyTheZombie.announce();
-//
-////    -------------------- /* copy semantics */
+
+//    -------------------- /* copy semantics */
     Zombie AndyTheClonedZombie(AndyTheZombie);
     AndyTheClonedZombie.announce();
 

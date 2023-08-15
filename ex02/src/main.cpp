@@ -6,9 +6,10 @@
 /*   By: rokupin <rokupin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 00:16:08 by rokupin           #+#    #+#             */
-/*   Updated: 2022/12/07 00:16:09 by rokupin          ###   ########.fr       */
+/*   Updated: 2023/08/15 14:43:53 by rokupin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 /**
 		Description
 	So, basically, it is all about showing a difference between the pointer and
@@ -19,7 +20,7 @@
  		address that can be taken with the unary & operator and a certain amount
  		of space that can be measured with the sizeof operator. Using those
  		operators on a reference returns a value corresponding to whatever the
- 		reference is bound to; the reference’s own address and size are
+ 		reference is bound to; the reference's own address and size are
  		invisible. Since the reference assumes the identity of the original
  		variable in this way, it is convenient to think of a reference as another
  		name for the same variable.
@@ -40,7 +41,7 @@
 
 int main() {
 	const std::string kString = "HI THIS IS BRAIN";
-	const std::string& kReferenceString = kString;
+	const std::string &kReferenceString = kString;
 	const std::string *ptr_string = &kString;
 
 	std::cout << "string itself: " << kString << std::endl;

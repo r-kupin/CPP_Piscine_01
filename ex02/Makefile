@@ -14,7 +14,7 @@
 
 NAME = HI_THIS_IS_BRAIN
 
-SRCS = main.cpp
+SRCS = src/main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
