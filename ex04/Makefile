@@ -27,22 +27,18 @@ ASANFLAGS = -g -fsanitize=address
 all: $(NAME)
 
 asan: $(ASAN)
-	./$(ASAN)
 
 valgrnd: $(NAME)
 	valgrind ./$(NAME)
 
-test: $(NAME)
-	sh resources/test.sh
+test: $(ASAN)
+	sh resources/test.sh $(ASAN)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(ASAN): $(OBJS)
 	$(CXX) $(ASANFLAGS) $(CXXFLAGS) $(OBJS) -o $(ASAN)
-
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 src/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@

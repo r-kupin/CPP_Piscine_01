@@ -41,15 +41,6 @@ $(NAME): $(OBJS)
 $(ASAN): $(OBJS)
 	$(CXX) $(ASANFLAGS) $(CXXFLAGS) $(OBJS) -o $(ASAN)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-$(NAME_LIB): $(LIB_OBJS)
-	$(LIB_CXX) $(NAME_LIB) $(LIB_OBJS)
-
-$(TEST): $(TEST_OBJS) $(NAME_LIB)
-	$(GXX) $(GXXFLAGS) $(TEST_OBJS) $(NAME_LIB)  -o $(TEST)
-
 src/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
