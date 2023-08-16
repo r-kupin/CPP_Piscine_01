@@ -16,8 +16,9 @@
 
 1.“pointer-to-member-function” is different from “pointer-to-function”
 	In particular class, pointer-to-function would be like:
- 		void (*PTF)() const; // PTF - is the name of the variable of the type
-				//	“pointer-to-function” or “pointer-to-static-member-function”
+ 		void (*PTF)() const;
+ 		// PTF - is the name of the variable of the type
+		//	“pointer-to-function” or “pointer-to-static-member-function”
 	And pointer to member function would be:
  		void (Harl::*PTMF)() const; // PTMF - is the name of the variable of
 									 //	the type “pointer-to-member-function”

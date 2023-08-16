@@ -63,10 +63,10 @@ void Harl::debug() const {
 }
 
 void Harl::info() const {
-	std::cout << kColorInfo;
-	std::cout << "Harl: I cannot believe adding extra bacon cost more money. " <<
-			  "You don’t put enough! If you did I would not have to ask " <<
-			  "for it!" << kColorReset << std::endl;
+    std::cout << kColorInfo;
+    std::cout << "Harl: I cannot believe adding extra bacon costs more money." <<
+              "You didn’t put enough bacon in my burger! If you did, I " <<
+              "wouldn’t be asking for more!" << kColorReset << std::endl;
 }
 
 void Harl::warning() const {
@@ -83,5 +83,5 @@ void Harl::error() const {
 }
 
 void Harl::undefined() const {
-	std::cout << "Harl: *ROLLS HER EYES IN FRUSTRATION*" << std::endl;
+    std::cout << "Harl: *ROLLS EYES IN FRUSTRATION*" << std::endl;
 }

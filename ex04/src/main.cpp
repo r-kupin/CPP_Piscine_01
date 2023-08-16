@@ -33,10 +33,10 @@ int main(int ac, char **av) {
 	ReplaceAssert::CheckNumberOfArgs(ac);
 
 	std::string filename = av[1];
-	const std::string s1 = av[2];
-	const std::string s2 = av[3];
+	const std::string find = av[2];
+	const std::string replace = av[3];
 
-	ReplaceAssert::CheckArgValues(filename, s1, s2);
+	ReplaceAssert::CheckArgValues(filename, find, replace);
 
 	std::ifstream f_in;
 	f_in.open(filename.data());
@@ -49,6 +49,6 @@ int main(int ac, char **av) {
 
 	ReplaceAssert::CheckOutputFile(f_out);
 
-	Replacer::Replace(f_in, f_out, s1, s2);
+	Replacer::Replace(f_in, f_out, find, replace);
 	return 0;
 }

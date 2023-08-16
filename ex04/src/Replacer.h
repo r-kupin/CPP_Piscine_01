@@ -16,8 +16,8 @@
 #include <iosfwd>
 
 struct Replacer {
-	static void Replace( std::ifstream& inp, std::ofstream& out,
-							const std::string& s1, const std::string& s2);
+	static void Replace(std::ifstream& inp, std::ofstream& out,
+                        const std::string& find, const std::string& replace);
 };
 
 #endif //EX04_REPLACER_H

@@ -78,14 +78,14 @@ static bool TryReadCharToBuffer(std::ifstream &inp,
  * Writes the replacement string to an output file stream and increments
  * the replacement count.
  * @param out The output file stream to write to.
- * @param s2 The replacement string to write.
+ * @param replace The replacement string to write.
  * @param repl_count A reference to the replacement count variable to
  * increment.
  */
 static void FlushReplacementString(std::ofstream &out,
-									const std::string &s2,
+									const std::string &replace,
 									int &repl_count) {
-	out << s2;
+	out << replace;
 	repl_count++;
 }
 
@@ -118,22 +118,22 @@ static void CloseStreamsShowMessage(std::ifstream &inp,
  * 7. Close the buffers and print statistics
  * @param inp The input file stream to read from.
  * @param out The output file stream to write to.
- * @param s1 The substring to search for.
- * @param s2 The replacement string to use.
+ * @param find The substring to search for.
+ * @param replace The replacement string to use.
  */
 void Replacer::Replace(std::ifstream &inp,
 						std::ofstream &out,
-						const std::string &s1,
-						const std::string &s2) {
+						const std::string &find,
+						const std::string &replace) {
 	int repl_count = 0;
 	size_t i = 0;
 
-	std::string buffer(s1.length(), ' ');
+	std::string buffer(find.length(), ' ');
 
 	while (TryReadCharToBuffer(inp, buffer, i)) {
-		ReadToBuffer(s1, buffer, inp, i);
-		if (buffer == s1) {
-			FlushReplacementString(out, s2, repl_count);
+		ReadToBuffer(find, buffer, inp, i);
+		if (buffer == find) {
+			FlushReplacementString(out, replace, repl_count);
 		} else {
 			FlushTheBuffer(out, i, buffer);
 		}
